@@ -1,0 +1,12 @@
+upstream backends {
+    server example-app-blue:8080;
+    server example-app-green:8080;
+}
+
+server {
+    listen 8080;
+ 
+    location / {
+        proxy_pass http://backends;
+    }
+}
